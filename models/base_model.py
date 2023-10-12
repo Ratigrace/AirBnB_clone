@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from models import storage
 import uuid
 from datetime import datetime
 
@@ -25,14 +26,18 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
 
+            '''Call the new method of storage for new instances'''
+            storage.new(self)
+
     def __str__(self):
         '''returns a string representation of BaseModel'''
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         '''updates current attributes with date and time'''
-
         self.updated_at = datetime.now()
+        '''Calling the save method of storage to save the instance'''
+        storage.save()
 
     def to_dict(self):
         '''returns a dictionary containg keys/values for instances'''
