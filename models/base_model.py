@@ -47,19 +47,3 @@ class BaseModel:
         obj_dict['updated_at'] = self.updated_at.isoformat()
         return obj_dict
 
-        if obj_dict['__class__'] == 'BaseModel':
-            ''' Check if "__class__" is "BaseModel"'''
-            obj_dict.pop('__class__', None)
-            '''Remove the '__class__' key from the dictionary'''
-
-            obj_dict['created_at'] = datetime.strptime(obj_dict['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
-            obj_dict['updated_at'] = datetime.strptime(obj_dict['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
-            '''Convert 'created_at' and 'updated_at' strings to datetime objects'''
-
-            instance = BaseModel(**obj_dict)
-            '''Create an instance of the BaseModel class using **kwargs'''
-
-        else:
-            print("Invalid '__class__' value in the dictionary.")
-            '''Handle the case when "__class__" is not "BaseModel"'''
-
