@@ -4,6 +4,9 @@ from models.base_models import Basemodel
 
 
 class Amenity(Basemodel):
-    '''Amenity information'''
+    '''Amenity information
+    Attributes:
+        name (str): The name of the amenity.
+    '''
 
     name = ''
