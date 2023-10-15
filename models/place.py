@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 '''A class place that inherits Basemodel'''
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 
 
-class Place(Basemodel):
+class Place(BaseModel):
     '''Place information
     Attributes:
         city_id (str): The City id.
@@ -22,7 +22,7 @@ class Place(Basemodel):
     city_id = ''
     user_id = ''
     name = ''
-    description: string = ''
+    description = ''
     number_rooms = 0
     number_bathrooms = 0
     max_guest = 0

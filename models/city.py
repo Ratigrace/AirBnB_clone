@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 '''A class City that inherits Basemodel'''
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 
 
-class City(Basemodel):
+class City(BaseModel):
     '''Provides city information
     Attributes:
         state_id (str): The state id

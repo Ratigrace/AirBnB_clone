@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 '''Class user that inherits "Basemodel"'''
 
-from models.base_model import Basemodel
+from models.base_model import BaseModel
 
 
-class User(Basemodel):
+class User(BaseModel):
     '''User information
     Attributes:
         email (str): The email of the user.

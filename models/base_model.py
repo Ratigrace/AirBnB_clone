@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from models import storage
+import models
 import uuid
 from datetime import datetime
 
@@ -18,7 +18,9 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
-                    setattr(self, key, datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
+                    setattr(self,
+                            key, datetime.strptime(value,
+                                                   "%Y-%m-%dT%H:%M:%S.%f"))
                 elif key != '__class__':
                     setattr(self, key, value)
         else:
@@ -27,17 +29,18 @@ class BaseModel:
             self.updated_at = datetime.now()
 
             '''Call the new method of storage for new instances'''
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         '''returns a string representation of BaseModel'''
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
 
     def save(self):
         '''updates current attributes with date and time'''
         self.updated_at = datetime.now()
         '''Calling the save method of storage to save the instance'''
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         '''returns a dictionary containg keys/values for instances'''
@@ -46,4 +49,3 @@ class BaseModel:
         obj_dict['created_at'] = self.created_at.isoformat()
         obj_dict['updated_at'] = self.updated_at.isoformat()
         return obj_dict
-

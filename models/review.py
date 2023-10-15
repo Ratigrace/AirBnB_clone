@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 '''A class review that inherits Basemodel'''
+from models.base_model import BaseModel
 
 
-class Review(Basemodel):
+class Review(BaseModel):
     '''Review information
     Attributes:
         place_id (str): The Place id.
