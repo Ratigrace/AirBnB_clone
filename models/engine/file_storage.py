@@ -1,7 +1,14 @@
 #!/usr/bin/python3
-
+"""The fileStorage class implementation"""
 import json
 from models.base_model import BaseModel
+from models.user import User
+from models.amenity import Amenity
+from models.state import State
+from models.review import Review
+from models.city import City
+from models.place import Place
+
 
 class FileStorage:
     '''Defining File storage class'''
@@ -37,4 +44,3 @@ class FileStorage:
                     FileStorage.__objects[key] = obj
         except FileNotFoundError:
             pass
-

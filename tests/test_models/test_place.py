@@ -4,13 +4,19 @@ import unittest
 from models.place import Place
 import pycodestyle
 
+
 class TestPlace(unittest.TestCase):
+    """Text the Place model"""
+
     def setUp(self):
+        """Test setup"""
+
         self.place = Place()
         self.file_path = "models/place.py"
 
     def test_init(self):
-        # Test that attributes are initialized correctly
+        """Test that attributes are initialized correctly"""
+
         self.assertEqual(self.place.city_id, '')
         self.assertEqual(self.place.user_id, '')
         self.assertEqual(self.place.name, '')
@@ -24,7 +30,8 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(self.place.amenity_ids, [])
 
     def test_docstrings(self):
-        # Check if class docstring and attributes docstrings are present
+        """Check if class docstring and attributes docstrings are present"""
+
         self.assertIsNotNone(Place.__doc__)
         self.assertIsNotNone(Place.city_id.__doc__)
         self.assertIsNotNone(Place.user_id.__doc__)
@@ -39,9 +46,12 @@ class TestPlace(unittest.TestCase):
         self.assertIsNotNone(Place.amenity_ids.__doc__)
 
     def test_pep8_conformance(self):
+        """Check pep8 conformance"""
+
         style = pycodestyle.StyleGuide(quiet=False)
         result = style.check_files([self.file_path])
         self.assertEqual(result.total_errors, 0, "PEP8 style violations found")
+
 
 if __name__ == '__main__':
     unittest.main()
